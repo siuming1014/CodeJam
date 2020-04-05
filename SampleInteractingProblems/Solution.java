@@ -4,6 +4,7 @@ public class Solution {
     public static int solve(int a, int b) {
         return (a + b) / 2;
     }
+
     public static void interact(Scanner input, int a, int b) {
         int m = solve(a, b);
         System.out.println(m);

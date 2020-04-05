@@ -14,12 +14,12 @@ public class Solution {
         int diff = 0;
         String inputStringAppendZero = inputString.concat("0");
         // List<Character> outputCharList = new ArrayList<>();
-        StringBuilder sb = new StringBuilder(); 
-        for (char c: inputStringAppendZero.toCharArray()) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : inputStringAppendZero.toCharArray()) {
             curNum = c - '0';
             diff = curNum - curDepth;
             if (diff != 0) {
-                for (int i = 0; i < Math.abs(diff); i++){
+                for (int i = 0; i < Math.abs(diff); i++) {
                     // outputCharList.add((diff > 0) ? '(' : ')');
                     sb.append((diff > 0) ? '(' : ')');
                 }
@@ -30,7 +30,7 @@ public class Solution {
         String retString = sb.toString();
         return retString.substring(0, retString.length() - 1);
     }
-    
+
     public static void main(String... args) {
         try {
             // BufferedReader in = new BufferedReader(new InputStreamReader (System.in));
@@ -38,17 +38,16 @@ public class Solution {
             // int n = Integer.parseInt(in.readLine());
             int n = in.nextInt();
             String[] inputStrings = new String[n];
-			for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) {
                 inputStrings[i] = in.next();
-			}
-			for (int i = 0; i < n; i++) {
-				String result = solve(inputStrings[i]);
-				System.out.println(String.format("Case #%d: %s", i + 1, result));
-			}
-		}
-		catch (Throwable e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
+            }
+            for (int i = 0; i < n; i++) {
+                String result = solve(inputStrings[i]);
+                System.out.println(String.format("Case #%d: %s", i + 1, result));
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 }

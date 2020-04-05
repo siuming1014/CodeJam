@@ -40,35 +40,35 @@ public class Solution {
 
     private static boolean solveByBackTracking(int[][] matrix) {
         int dim = matrix.length;
-        int row = -1; 
-        int col = -1; 
-        boolean isEmpty = true; 
-        for (int i = 0; i < dim; i++) { 
-            for (int j = 0; j < dim; j++) { 
-                if (matrix[i][j] == 0) { 
-                    row = i; 
+        int row = -1;
+        int col = -1;
+        boolean isEmpty = true;
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                if (matrix[i][j] == 0) {
+                    row = i;
                     col = j;
-                    isEmpty = false;  
-                    break; 
-                } 
-            } 
-            if (!isEmpty) { 
-                break; 
+                    isEmpty = false;
+                    break;
+                }
             }
-        } 
-        if (isEmpty) { 
-            return true; 
-        } 
-      
-        for (int num = 1; num <= dim; num++) { 
-            if (isValidMove(matrix, row, col, num)) { 
-                matrix[row][col] = num; 
-                if (solveByBackTracking(matrix)) { 
-                    return true; 
+            if (!isEmpty) {
+                break;
+            }
+        }
+        if (isEmpty) {
+            return true;
+        }
+
+        for (int num = 1; num <= dim; num++) {
+            if (isValidMove(matrix, row, col, num)) {
+                matrix[row][col] = num;
+                if (solveByBackTracking(matrix)) {
+                    return true;
                 } else {
                     matrix[row][col] = 0;
-                } 
-            } 
+                }
+            }
         }
         return false;
     }
@@ -88,13 +88,13 @@ public class Solution {
         }
 
         // if (trace == dim * (dim + 1) / 2) {
-        //     int[][] retMatrix = new int[dim][dim];
-        //     for (int i = 0; i < dim; i++) {
-        //         for (int j = 0; j < dim; j++) {
-        //             retMatrix[i][j] = (i == j) ? i + 1 : 0;
-        //         }
-        //     }
-        //     return solveByBackTracking(retMatrix) ? retMatrix : new int[0][0];
+        // int[][] retMatrix = new int[dim][dim];
+        // for (int i = 0; i < dim; i++) {
+        // for (int j = 0; j < dim; j++) {
+        // retMatrix[i][j] = (i == j) ? i + 1 : 0;
+        // }
+        // }
+        // return solveByBackTracking(retMatrix) ? retMatrix : new int[0][0];
         // }
 
         Set<List<Integer>> filteredDiags = new HashSet<>();
@@ -106,7 +106,7 @@ public class Solution {
 
         // System.out.println(filteredDiags);
 
-        for (List<Integer> diag: filteredDiags) {
+        for (List<Integer> diag : filteredDiags) {
             int[][] retMatrix = new int[dim][dim];
             for (int i = 0; i < dim; i++) {
                 for (int j = 0; j < dim; j++) {
@@ -119,30 +119,30 @@ public class Solution {
         }
         return new int[0][0];
     }
-    
-    public static void main(String... args) {
-    //     int dim = 4;
-    //     int trace = 13;
-    //     Set<List<Integer>> noDupDiags = new HashSet<>();
-    //     getAllPossibleDiag(dim, dim, trace).forEach(diag -> {
-    //         Collections.sort(diag);
-    //         noDupDiags.add(diag);
-    //     });
-    //     System.out.println(getAllPossibleDiag(dim, dim, trace));
-    //     System.out.println(noDupDiags);
-    // }
 
-    // public static void main2(String... args) {
+    public static void main(String... args) {
+        // int dim = 4;
+        // int trace = 13;
+        // Set<List<Integer>> noDupDiags = new HashSet<>();
+        // getAllPossibleDiag(dim, dim, trace).forEach(diag -> {
+        // Collections.sort(diag);
+        // noDupDiags.add(diag);
+        // });
+        // System.out.println(getAllPossibleDiag(dim, dim, trace));
+        // System.out.println(noDupDiags);
+        // }
+
+        // public static void main2(String... args) {
         try {
             Scanner in = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
             int n = in.nextInt();
             int[] dim = new int[n];
             int[] traces = new int[n];
-			for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) {
                 dim[i] = in.nextInt();
                 traces[i] = in.nextInt();
-			}
-			for (int i = 0; i < n; i++) {
+            }
+            for (int i = 0; i < n; i++) {
                 int[][] result = solve(dim[i], traces[i]);
                 if (result.length == 0) {
                     System.out.println(String.format("Case #%d: IMPOSSIBLE", i + 1));
@@ -151,17 +151,16 @@ public class Solution {
                     StringBuilder sb = new StringBuilder();
                     for (int j = 0; j < result.length; j++) {
                         for (int k = 0; k < result[0].length; k++) {
-                            sb.append(result[j][k]);  // 1st idx=row idx, 2nd idx=col idx
+                            sb.append(result[j][k]); // 1st idx=row idx, 2nd idx=col idx
                             sb.append((k == result[0].length - 1) ? ((j == result.length - 1) ? "" : '\n') : ' ');
                         }
                     }
                     System.out.println(sb.toString());
                 }
-			}
-		}
-		catch (Throwable e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 }

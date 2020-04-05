@@ -21,7 +21,7 @@ public class Solution {
         int cLastEventEndTime = 0;
         int jLastEventEndTime = 0;
         char[] retChars = new char[eventTimes.length];
-        for (int[] eventTime: eventTimesAppendIdx) {
+        for (int[] eventTime : eventTimesAppendIdx) {
             if (eventTime[0] >= cLastEventEndTime) {
                 retChars[eventTime[2]] = 'C';
                 cLastEventEndTime = eventTime[1];
@@ -36,7 +36,7 @@ public class Solution {
         }
         return String.valueOf(retChars);
     }
-    
+
     public static void main(String... args) {
         try {
             // BufferedReader in = new BufferedReader(new InputStreamReader (System.in));
@@ -45,22 +45,21 @@ public class Solution {
             int n = in.nextInt();
             int[] numOfEvents = new int[n];
             List<int[][]> eventTimes = new ArrayList<>();
-			for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) {
                 numOfEvents[i] = in.nextInt();
                 eventTimes.add(new int[numOfEvents[i]][2]);
                 for (int j = 0; j < numOfEvents[i]; j++) {
                     eventTimes.get(i)[j][0] = in.nextInt();
                     eventTimes.get(i)[j][1] = in.nextInt();
                 }
-			}
-			for (int i = 0; i < n; i++) {
-				String result = solve(eventTimes.get(i));
-				System.out.println(String.format("Case #%d: %s", i + 1, result));
-			}
-		}
-		catch (Throwable e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
+            }
+            for (int i = 0; i < n; i++) {
+                String result = solve(eventTimes.get(i));
+                System.out.println(String.format("Case #%d: %s", i + 1, result));
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 }

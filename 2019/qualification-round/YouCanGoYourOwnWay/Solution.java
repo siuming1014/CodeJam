@@ -10,25 +10,24 @@ public class Solution {
         }
         return String.valueOf(pathArr);
     }
-    
+
     public static void main(String... args) {
         try {
-			BufferedReader in = new BufferedReader(new InputStreamReader (System.in));
-		 	int n = Integer.parseInt(in.readLine());
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            int n = Integer.parseInt(in.readLine());
             int[] nArr = new int[n];
             String[] pathArr = new String[n];
-			for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) {
                 nArr[i] = Integer.parseInt(in.readLine());
                 pathArr[i] = in.readLine();
-			}
-			for (int j = 0; j < n; j++) {
-				String result = solve(nArr[j], pathArr[j]);
-				System.out.print(String.format("Case #%d: %s", j + 1, result));
-			}
-		}
-		catch (Throwable e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
+            }
+            for (int j = 0; j < n; j++) {
+                String result = solve(nArr[j], pathArr[j]);
+                System.out.print(String.format("Case #%d: %s", j + 1, result));
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 }

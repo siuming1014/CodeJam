@@ -23,7 +23,8 @@ public class Solution {
         }
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
-                if (rowElementSets.get(i).contains(matrix.get(i).get(j)) || colElementSets.get(j).contains(matrix.get(i).get(j))) {
+                if (rowElementSets.get(i).contains(matrix.get(i).get(j))
+                        || colElementSets.get(j).contains(matrix.get(i).get(j))) {
                     return false;
                 }
                 rowElementSets.get(i).add(matrix.get(i).get(j));
@@ -53,7 +54,7 @@ public class Solution {
         }
         return new ArrayList<>();
     }
-    
+
     public static void main(String... args) {
         try {
             // BufferedReader in = new BufferedReader(new InputStreamReader (System.in));
@@ -61,11 +62,11 @@ public class Solution {
             int n = in.nextInt();
             int[] dim = new int[n];
             int[] traces = new int[n];
-			for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) {
                 dim[i] = in.nextInt();
                 traces[i] = in.nextInt();
-			}
-			for (int i = 0; i < n; i++) {
+            }
+            for (int i = 0; i < n; i++) {
                 // long start = System.currentTimeMillis();
                 List<List<Integer>> result = solve(dim[i], traces[i], 20. / n);
                 // float elapsedTimeSec = (System.currentTimeMillis() - start) / 1000F;
@@ -78,17 +79,16 @@ public class Solution {
                     StringBuilder sb = new StringBuilder();
                     for (int j = 0; j < dim[i]; j++) {
                         for (int k = 0; k < dim[i]; k++) {
-                            sb.append(result.get(j).get(k));  // 1st idx=row idx, 2nd idx=col idx
+                            sb.append(result.get(j).get(k)); // 1st idx=row idx, 2nd idx=col idx
                             sb.append((k == dim[i] - 1) ? ((j == dim[i] - 1) ? "" : '\n') : ' ');
                         }
                     }
                     System.out.println(sb.toString());
                 }
-			}
-		}
-		catch (Throwable e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 }
