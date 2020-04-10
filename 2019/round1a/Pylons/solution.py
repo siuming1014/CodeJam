@@ -7,7 +7,7 @@ def solve(r, c):
         _r_j, _c_j = int(j / c), j % c
         return (_r_i == _r_j) or (_c_i == _c_j) or (_r_i - _c_i == _r_j - _c_j) or (_r_i + _c_i == _r_j + _c_j)
 
-    trial_count = 10000000
+    trial_count = 100000
     coordinates = [(_r + 1, _c + 1) for _r in range(r) for _c in range(c)]
     while (trial_count > 0):
         remaining = {i for i in range(len(coordinates))}
